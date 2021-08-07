@@ -1,6 +1,6 @@
 run<-function(machid,spreadsheet,spreadsheet_error){
   data(problems,package="nlsCompare",envir = environment())
-  data(sep=",",methods,package="nlsCompare",envir = environment())
+  data(methods,package="nlsCompare",envir = environment())
   NLSproblems <-problems
   NLSmethods <- methods
 
