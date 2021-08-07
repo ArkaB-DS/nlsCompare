@@ -1,6 +1,8 @@
 run<-function(machid,spreadsheet,spreadsheet_error){
-  NLSproblems <- read.table("data/problems.csv",header=T)
-  NLSmethods <- read.table("data/methods.csv",header=T,sep=",")
+  data(problems,package="nlsCompare",envir = environment())
+  data(methods,package="nlsCompare",envir = environment())
+  NLSproblems <-problems
+  NLSmethods <- methods
 
   problemNumber <- 1
   errorNumber <- 1
