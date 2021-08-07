@@ -1,6 +1,6 @@
 run<-function(machid,spreadsheet,spreadsheet_error){
   data(problems,package="nlsCompare",envir = environment())
-  data(methods,package="nlsCompare",envir = environment())
+  data(sep=",",methods,package="nlsCompare",envir = environment())
   NLSproblems <-problems
   NLSmethods <- methods
 
@@ -8,7 +8,7 @@ run<-function(machid,spreadsheet,spreadsheet_error){
   errorNumber <- 1
 
   for(i in 1:nrow(NLSproblems)){
-    source(paste("test_files\\",NLSproblems$Name[i],sep=""))
+    source(paste("R\\test_files\\",NLSproblems$Name[i],sep=""))
     for(j in 1:nrow(NLSmethods)){
       errorNLSFlag <- 0
       errorOtherFlag<-0
