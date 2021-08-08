@@ -15,11 +15,7 @@ machineId()
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Returns a string with machine summary information.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -41,24 +37,6 @@ machineId()
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function ()
-{
-    options(warn = -1)
-    sy <- Sys.info()
-    cpu <- benchmarkme::get_cpu()
-    ramtry <- as.numeric(benchmarkme::get_ram())
-    if (!anyNA(ramtry)) {
-        ram <- ramtry/(1024^3)
-    }
-    else {
-        ram <- paste(sum(as.numeric(system("wmic MemoryChip get Capacity",
-            intern = TRUE)), na.rm = T)/1024^3, "GB")
-    }
-    machid <<- paste(sy["nodename"], ":", sy["user"], "-", sy["sysname"],
-        "-", sy["release"], "|", cpu$model_name, "|", ram, " RAM",
-        sep = "")
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

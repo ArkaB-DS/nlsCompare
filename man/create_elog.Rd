@@ -15,11 +15,7 @@ create_elog()
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Returns a data base with column names `DateTime`, `FileName`, `Solver`, `WhatFails`, `Algorithm`, `Control`, `Message`, `MachID`.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -41,14 +37,6 @@ create_elog()
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function ()
-{
-    errorlog <- data.frame(DateTime = "", FileName = "", Solver = "",
-        WhatFails = "", Algorithm = "", Control = "", Message = "",
-        MachID = "")
-    return(errorlog)
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

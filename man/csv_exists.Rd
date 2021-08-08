@@ -1,24 +1,21 @@
 \name{csv_exists}
 \alias{csv_exists}
 \title{
-Check if "nlsDatabase.csv" and "nlsErrorLog.csv" are present in the directory chosen by `setup_dir`.
+Check if "nlsDatabase.csv" and "nlsErrorLog.csv" are present
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This functions checks if "nlsDatabase.csv" and "nlsErrorLog.csv" are present in the directory chosen by `setup_dir`.
 }
 \usage{
 csv_exists()
 }
 %- maybe also 'usage' for other objects documented here.
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+If the csv files are not present, then it is created and appropriate messages are printed.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+This function prints " 'nlsDatabase.csv' already exists" if "nls.Database.csv" already exists in the directory chosen by `setup_dir()` and prints " 'nlsDatabase.csv' has been created" otherwise.
+Similarly, for "nlsErrorLog"
 }
 \references{
 %% ~put references to the literature/web site here ~

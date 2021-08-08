@@ -15,11 +15,7 @@ create_db()
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Returns a dataframe with column names `DateTime`, `FileName`, `Solver`, `Algorithm`, `Control`, `Residuals`, `Deviance`, `Gradient`, `Parameters`, `Rmat`, `Convergence`, `Passed`, `Tags`, `MachID`
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -37,19 +33,7 @@ create_db()
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function ()
-{
-    database <- data.frame(DateTime = "", FileName = "", Solver = "",
-        Algorithm = "", Control = "", Residuals = "", Deviance = "",
-        Gradient = "", Parameters = "", Rmat = "", Convergence = "",
-        Passed = "", Tags = "", MachID = "")
-    return(database)
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
