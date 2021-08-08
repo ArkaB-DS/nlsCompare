@@ -11,7 +11,7 @@ setup_dir()
 }
 %- maybe also 'usage' for other objects documented here.
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+This function uses `setwd()` to set the chosen directory as the working directory.
 }
 \value{
 %%  ~Describe the value returned

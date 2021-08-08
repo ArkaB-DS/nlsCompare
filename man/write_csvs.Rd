@@ -5,12 +5,20 @@
 Write csv files of the dataframes created by `run()`
 }
 \description{
-This function creates csv files named "nlsDatabase.csv" and "nlsErrorLog.csv" which contain the comparison results of different packages' functions for nls with base `nls`
+This function creates csv files named "nlsDatabase.csv" and "nlsErrorLog.csv" which contain the comparison results of different packages' functions for nls with base `nls`.
 }
 \usage{
-write_csvs()
+write_csvs(spreadsheet, spreadsheet_error)
 }
 %- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{spreadsheet}{
+Takes in the dataframe that will write to "nlsDatabase.csv".
+}
+  \item{spreadsheet_error}{
+Takes in the dataframe that will write to "nlsErrorLog.csv".
+}
+}
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
@@ -42,7 +50,7 @@ write_csvs()
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function ()
+function (spreadsheet, spreadsheet_error)
 {
     write.table(spreadsheet, file = "nlsDatabase.csv", append = TRUE,
         sep = ",", col.names = FALSE, row.names = FALSE)
