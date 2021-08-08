@@ -1,5 +1,5 @@
 rm_nls <- function(){
-  #?? how to deal with envirnoment
+  #?? how to deal with environment
   rm(Convergence,cpu,Deviance,epstol,Gradient,i,j,machid,
      NLSdata,NLSformula,NLSlower,NLSmethods,NLSproblems,NLSrunline,
      NLSstart,NLSsubset,NLSupper,NLSweights,output,output_nls,
