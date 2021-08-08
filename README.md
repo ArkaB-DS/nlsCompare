@@ -14,3 +14,11 @@ by Arkajyoti Bhattacharjee and mentored by John Nash.
 5. Check if the final output csv-s - **"nlsDatabase.csv"** and **"nlsErrorLog.csv"** exists in the directory chosen in step 2.
 6. Run the main program - comparison-testing and accordingly editing of the dataframes - using `run()`.
 7. Finally, write the dataframes into **"nlsDatabase.csv"** and **"nlsErrorLog.csv"** using `write_csvs`.
+
+## Installation
+
+**Warning:** As of 2021-08-20, the package is still in development stage!
+
+> # install.packages("devtools")
+> library(devtools)
+> devtools::use_github("ArkaB-DS/nlsCompare")
