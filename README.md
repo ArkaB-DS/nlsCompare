@@ -19,6 +19,10 @@ by Arkajyoti Bhattacharjee and mentored by John Nash.
 
 **Warning:** As of 2021-08-20, the package is still in development stage!
 
+To install this developement repo via `devtools`, use:
+
+```
 > # install.packages("devtools")
 > library(devtools)
-> devtools::use_github("ArkaB-DS/nlsCompare")
+> devtools::install_github("ArkaB-DS/nlsCompare")
+```
