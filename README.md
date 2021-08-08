@@ -17,7 +17,7 @@ by Arkajyoti Bhattacharjee and mentored by John Nash.
 
 ## Installation
 
-**Warning:** As of 2021-08-20, the package is still in development stage!
+**Warning:** As of 2021-08-20, the package is still in the development stage!
 
 To install this developement repo via `devtools`, use:
 
