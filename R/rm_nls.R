@@ -7,5 +7,6 @@ rm_nls <- function(){
      sy,scr_dir,spreadsheet_error,ramtry,NLSrunline,errorOtherFlag,
      errorNumber,errorNLSFlag,checker.mat,checker.resid,checker.pars,
      checker.rmat.checker.resid,checker.pars,checker.other,checker.nls,
-     checker.grad,checker.dev,checker.conv,checker.rmat,NLSrunline0)
+     checker.grad,checker.dev,checker.conv,checker.rmat,NLSrunline0,
+     envir=.GlobalEnv)
 }
