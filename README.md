@@ -13,7 +13,7 @@ by Arkajyoti Bhattacharjee and mentored by John Nash.
 4. Create dataframe to store the error log. This shows which **"solver"** fails in **"which problem"** and **"why?"**. This shows limitations, improvements and areas of potential imporovements. Use `create_elog()`.
 5. Check if the final output csv-s - **"nlsDatabase.csv"** and **"nlsErrorLog.csv"** exists in the directory chosen in step 2.
 6. Run the main program - comparison-testing and accordingly editing of the dataframes - using `run()`.
-7. Finally, write the dataframes into **"nlsDatabase.csv"** and **"nlsErrorLog.csv"** using `write_csvs`.
+7. Finally, write the dataframes into **"nlsDatabase.csv"** and **"nlsErrorLog.csv"** using `write_csvs()`.
 
 ## Installation
 
