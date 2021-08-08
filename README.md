@@ -16,6 +16,7 @@ by Arkajyoti Bhattacharjee and mentored by John Nash.
 7. Write the dataframes into **"nlsDatabase.csv"** and **"nlsErrorLog.csv"** using `write_csvs()`.
 8. Finally, remove the global variables created in the above steps using `rm_nls()`.
 
+An example R script to demonstrate the above workflow is : [nlsCompareWorkflow.R](https://github.com/ArkaB-DS/nlsCompare/blob/master/nlsCompareWorkflow.R).
 ## Installation
 
 **Warning:** As of 2021-08-20, the package is still in the development stage!
