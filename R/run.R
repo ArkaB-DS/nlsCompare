@@ -1,14 +1,17 @@
 run<-function(machid,spreadsheet,spreadsheet_error){
-  data(problems,package="nlsCompare",envir = environment())
-  data(methods,package="nlsCompare",envir = environment())
-  NLSproblems <-problems
-  NLSmethods <- methods
+  #data(problems,package="nlsCompare",envir = environment())
+  #data(methods,package="nlsCompare",envir = environment())
+  NLSproblems <- read.table(system.file("extdata","problems.csv",
+                                        package="nlsCompare"),header=TRUE,sep=",")
+  NLSmethods <- read.table(system.file("extdata","methods.csv",
+                                       package="nlsCompare"),header=TRUE,sep=",")
 
   problemNumber <- 1
   errorNumber <- 1
 
   for(i in 1:nrow(NLSproblems)){
-    source(paste("R\\test_files\\",NLSproblems$Name[i],sep=""))
+    #source(paste("R\\test_files\\",NLSproblems$Name[i],sep=""))
+    source(system.file("scripts",NLSproblems$Name[i],package="nlsCompare"))
     for(j in 1:nrow(NLSmethods)){
       errorNLSFlag <- 0
       errorOtherFlag<-0

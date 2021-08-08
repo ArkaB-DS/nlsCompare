@@ -1,14 +1,14 @@
-\name{create_csvs}
-\alias{create_csvs}
+\name{create_db}
+\alias{create_db}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Create dataframes to store comparisons
+Create a dataframe to store the database of comparisons and testing
 }
 \description{
-This function creates `spreadsheet` and `spreadsheet_error` that finally get written in `nlsDatabase.csv` and `nlsErrorLog.csv` respectively.
+This function returns a dataframe that finally gets written in `nlsDatabase.csv`.
 }
 \usage{
-create_csvs()
+create_db()
 }
 %- maybe also 'usage' for other objects documented here.
 \details{
@@ -44,13 +44,11 @@ create_csvs()
 ## The function is currently defined as
 function ()
 {
-    spreadsheet <<- data.frame(DateTime = "", MachID = "", FileName = "",
-        Solver = "", Algorithm = "", Control = "", Residuals = "",
-        Deviance = "", Gradient = "", Parameters = "", Rmat = "",
-        Convergence = "", Passed = "", Tags = "")
-    spreadsheet_error <<- data.frame(DateTime = "", MachID = "",
-        FileName = "", Solver = "", WhatFails = "", Algorithm = "",
-        Control = "", Message = "")
+    database <- data.frame(DateTime = "", FileName = "", Solver = "",
+        Algorithm = "", Control = "", Residuals = "", Deviance = "",
+        Gradient = "", Parameters = "", Rmat = "", Convergence = "",
+        Passed = "", Tags = "", MachID = "")
+    return(database)
   }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
