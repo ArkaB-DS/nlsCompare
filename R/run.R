@@ -11,7 +11,7 @@ run<-function(machid,spreadsheet,spreadsheet_error){
 
   for(i in 1:nrow(NLSproblems)){
     #source(paste("R\\test_files\\",NLSproblems$Name[i],sep=""))
-    source(system.file("scripts",NLSproblems$Name[i],package="nlsCompare"))
+    withAutoprint(system.file("scripts",NLSproblems$Name[i],package="nlsCompare"))
     for(j in 1:nrow(NLSmethods)){
       errorNLSFlag <- 0
       errorOtherFlag<-0
