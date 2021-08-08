@@ -12,7 +12,8 @@ by Arkajyoti Bhattacharjee and mentored by Dr. John C Nash and Dr. Heather Turne
 3. Create dataframe to store the database of problems, algorithms and controls associated with `nls()` like functions using `create_db()`.
 4. Create dataframe to store the error log. This shows which **"solver"** fails in **"which problem"** and **"why?"**. This shows limitations, improvements and areas of potential imporovements. Use `create_elog()`.
 5. Check if the final output csv-s - **"nlsDatabase.csv"** and **"nlsErrorLog.csv"** exists in the directory chosen in step 2.
-6. Run the main program - comparison-testing and accordingly editing of the dataframes - using `run()`.
+6. Run the main program - comparison-testing and accordingly editing of the dataframes - using `run()`.  
+**Note:** If the console says "uphill search", just hit ENTER.
 7. Write the dataframes into **"nlsDatabase.csv"** and **"nlsErrorLog.csv"** using `write_csvs()`.
 8. Finally, remove the global variables created in the above steps using `rm_nls()`.
 
