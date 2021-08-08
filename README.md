@@ -3,7 +3,7 @@
 An R package to compare different packages' functions for nonlinear least squares with `nls` (base)
 
 This package grew out as a product of the Google Summer of Code (2021) project [`Improvements to nls()`](https://gitlab.com/nashjc/improvenls)
-by Arkajyoti Bhattacharjee and mentored by John Nash. 
+by Arkajyoti Bhattacharjee and mentored by Dr. John C Nash and Dr. Heather Turner. 
 
 ## Current Workflow
 
