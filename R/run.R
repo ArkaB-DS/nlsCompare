@@ -50,25 +50,25 @@ run<-function(machid,spreadsheet,spreadsheet_error){
       }
       if (errorNLSFlag==1 | errorOtherFlag==1 ){
         errorNumber <-errorNumber + 1
-        spreadsheet_error[errorNumber,3]<-NLSmethods[j,1]
-        spreadsheet_error[errorNumber,5]<-NLSmethods[j,2]
-        spreadsheet_error[errorNumber,6]<-NLSmethods[j,3]
-        spreadsheet_error[errorNumber,8]<-machid
-        spreadsheet_error[errorNumber,2]<-NLSproblems$Name[i]
-        spreadsheet_error[errorNumber,1]<-format(Sys.time(), "%Y-%m-%d %H:%M")
+        spreadsheet_error[errorNumber,3]<<-NLSmethods[j,1]
+        spreadsheet_error[errorNumber,5]<<-NLSmethods[j,2]
+        spreadsheet_error[errorNumber,6]<<-NLSmethods[j,3]
+        spreadsheet_error[errorNumber,8]<<-machid
+        spreadsheet_error[errorNumber,2]<<-NLSproblems$Name[i]
+        spreadsheet_error[errorNumber,1]<<-format(Sys.time(), "%Y-%m-%d %H:%M")
 
         if(errorNLSFlag==1 & errorOtherFlag==0){
-          spreadsheet_error[errorNumber,4]<-"NLS fails."
-          spreadsheet_error[errorNumber,7]<-attr(checker.nls,"condition")$message
+          spreadsheet_error[errorNumber,4]<<-"NLS fails."
+          spreadsheet_error[errorNumber,7]<<-attr(checker.nls,"condition")$message
 
         }else if (errorNLSFlag==0 & errorOtherFlag==1){
-          spreadsheet_error[errorNumber,4]<-paste(NLSmethods$solver[j]," fails.",sep="")
-          spreadsheet_error[errorNumber,7]<-attr(checker.other,"condition")$message
+          spreadsheet_error[errorNumber,4]<<-paste(NLSmethods$solver[j]," fails.",sep="")
+          spreadsheet_error[errorNumber,7]<<-attr(checker.other,"condition")$message
         } else if (errorNLSFlag==1 & errorOtherFlag==1){
-          spreadsheet_error[errorNumber,7]<-paste(attr(checker.nls,"condition")$message,
+          spreadsheet_error[errorNumber,7]<<-paste(attr(checker.nls,"condition")$message,
                                                   attr(checker.other,"condition")$message,
                                                   sep="|")
-          spreadsheet_error[errorNumber,4]<- "Both fail."
+          spreadsheet_error[errorNumber,4]<<- "Both fail."
         }
         next
       }
@@ -134,26 +134,26 @@ run<-function(machid,spreadsheet,spreadsheet_error){
       }
 
       ## write in spreadsheet
-      spreadsheet[problemNumber,3] <- NLSmethods[j,1]
-      spreadsheet[problemNumber,4] <- NLSmethods[j,2]
-      spreadsheet[problemNumber,5] <- NLSmethods[j,3]
+      spreadsheet[problemNumber,3] <<- NLSmethods[j,1]
+      spreadsheet[problemNumber,4] <<- NLSmethods[j,2]
+      spreadsheet[problemNumber,5] <<- NLSmethods[j,3]
 
-      spreadsheet[problemNumber,14] <- machid
-      spreadsheet[problemNumber,2] <- NLSproblems$Name[i]
-      spreadsheet[problemNumber,6] <- Residuals
-      spreadsheet[problemNumber,7] <- Deviance
-      spreadsheet[problemNumber,8] <-  Gradient
-      spreadsheet[problemNumber,9] <- Parameters
-      spreadsheet[problemNumber,10]<- Rmat
-      spreadsheet[problemNumber,11] <- Convergence
-      spreadsheet[problemNumber,12] <- ifelse(isTRUE(all.equal(as.numeric(c(Residuals,Deviance,
+      spreadsheet[problemNumber,14] <<- machid
+      spreadsheet[problemNumber,2] <<- NLSproblems$Name[i]
+      spreadsheet[problemNumber,6] <<- Residuals
+      spreadsheet[problemNumber,7] <<- Deviance
+      spreadsheet[problemNumber,8] <<-  Gradient
+      spreadsheet[problemNumber,9] <<- Parameters
+      spreadsheet[problemNumber,10]<<- Rmat
+      spreadsheet[problemNumber,11] <<- Convergence
+      spreadsheet[problemNumber,12] <<- ifelse(isTRUE(all.equal(as.numeric(c(Residuals,Deviance,
                                                                             Gradient,
                                                                             Parameters,Rmat,Convergence)),rep(1,6))),"Passed",
                                               ifelse(isTRUE(all.equal(as.numeric(c(Residuals,Deviance,
                                                                                    #radient,
                                                                                    Parameters,Rmat,Convergence)),rep(0,6))),"Failed",
                                                      "Indeterminate"))
-      spreadsheet[problemNumber,1] <- format(Sys.time(), "%Y-%m-%d %H:%M")
+      spreadsheet[problemNumber,1] <<- format(Sys.time(), "%Y-%m-%d %H:%M")
       (problemNumber <- problemNumber +1)
     }
     cat("Successful problem-->",i,"\n")
