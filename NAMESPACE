@@ -1,1 +1,3 @@
 exportPattern("^[[:alpha:]]+")
+importFrom("stats", "deviance", "resid")
+importFrom("utils", "read.table", "write.table")
