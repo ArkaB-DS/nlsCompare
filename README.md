@@ -18,6 +18,11 @@ by Arkajyoti Bhattacharjee and mentored by Dr. John C Nash and Dr. Heather Turne
 8. Finally, remove the global variables created in the above steps using `rm_nls()`.
 
 An example R script to demonstrate the above workflow is : [nlsCompareWorkflow.R](https://github.com/ArkaB-DS/nlsCompare/blob/master/nlsCompareWorkflow.R).
+
+## Documentation
+
+Please refer the [package vignette](https://github.com/ArkaB-DS/nlsCompare/blob/master/nlsCompare_Vignette.pdf) for further details.
+
 ## Installation
 
 **Warning:** As of 2021-08-20, the package is still in the development stage!
