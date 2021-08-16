@@ -11,8 +11,8 @@ NLSproblems <- read.table(system.file("extdata","problems.csv",
 NLSpars<-as.numeric(subset(NLSproblems,Name=="BOD2_4.R")[6:(6+subset(NLSproblems,Name=="BOD2_4.R")$nPars-1)])
 NLSssquares<-subset(NLSproblems,Name=="BOD2_4.R")$ssquares
 NLStag<-"bounded"
-NLSproblems[NLSproblems[,"Name"]=="BOD2_4.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
-NLSproblems[NLSproblems[,"Name"]=="BOD2_4.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
-write.table(NLSproblems,system.file("extdata","problems.csv",
-                                        package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
+# NLSproblems[NLSproblems[,"Name"]=="BOD2_4.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
+# NLSproblems[NLSproblems[,"Name"]=="BOD2_4.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
+# write.table(NLSproblems,system.file("extdata","problems.csv",
+#                                         package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
 

@@ -18,7 +18,7 @@ conc = c(17.3, 17.6, 17.9, 18.3, 18.5, 18.9, 19.0, 19.3, 19.8,
 time = c(2.45, 2.55, 2.65, 2.75, 2.85, 2.95, 3.05, 3.15, 3.25,
 		   3.35, 3.45, 3.55, 3.65, 3.75, 3.85, 3.95, 4.05, 4.15,
 		   4.25, 4.35, 4.45, 4.55, 4.65, 4.75, 4.85, 4.95, 5.05,
-		   5.15, 5.25, 5.35, 5.45, 5.55, 5.65, 5.75, 5.85, 5.95, 
+		   5.15, 5.25, 5.35, 5.45, 5.55, 5.65, 5.75, 5.85, 5.95,
 		   6.05, 6.15, 6.25, 6.35, 6.45, 6.55, 6.65, 6.75, 6.85,
 		   6.95, 7.05, 7.15, 7.25, 7.35, 7.45, 7.55, 7.65, 7.75)
 ## DATA
@@ -44,9 +44,8 @@ NLSpars<-as.numeric(subset(NLSproblems,Name=="Chloride_1.R")[6:(6+subset(NLSprob
 NLSssquares<-subset(NLSproblems,Name=="Chloride_1.R")$ssquares
 NLStag<-"unbounded"
 NLSrefVersion<-packageVersion(NLSref)
-NLSproblems[NLSproblems[,"Name"]=="Chloride_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
-NLSproblems[NLSproblems[,"Name"]=="Chloride_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
-write.table(NLSproblems,system.file("extdata","problems.csv",
-                                        package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
-
+# NLSproblems[NLSproblems[,"Name"]=="Chloride_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
+# NLSproblems[NLSproblems[,"Name"]=="Chloride_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
+# write.table(NLSproblems,system.file("extdata","problems.csv",
+#                                         package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
 rm(conc,time,Asym,prop,lrc)

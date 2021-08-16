@@ -10,7 +10,7 @@
 ## DATA
 time <- c(4.0,  5.0,  7.0, 12.0, 14.0, 16.0, 20.0, 24.0, 28.0, 31.0, 34.0, 37.5, 41.0)
 temp <- c(126, 125, 123, 120, 119, 118, 116, 115, 114, 113, 112, 111, 110)
-	
+
 NLSdata <- data.frame(time,temp)
 
 ## STARTING VALUE
@@ -31,10 +31,8 @@ NLSproblems <- read.table(system.file("extdata","problems.csv",
 NLSpars<-as.numeric(subset(NLSproblems,Name=="Rumford_1.R")[6:(6+subset(NLSproblems,Name=="Rumford_1.R")$nPars-1)])
 NLSssquares<-subset(NLSproblems,Name=="Rumford_1.R")$ssquares
 NLStag<-"unbounded"
-NLSproblems[NLSproblems[,"Name"]=="Rumford_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
-NLSproblems[NLSproblems[,"Name"]=="Rumford_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
-write.table(NLSproblems,system.file("extdata","problems.csv",
-                                        package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
-
-
+# NLSproblems[NLSproblems[,"Name"]=="Rumford_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
+# NLSproblems[NLSproblems[,"Name"]=="Rumford_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
+# write.table(NLSproblems,system.file("extdata","problems.csv",
+#                                         package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
 rm(time,temp,tc)

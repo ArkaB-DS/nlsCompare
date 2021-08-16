@@ -1,5 +1,5 @@
 # NLSProbName: Hobbs_1.R
-# NLSProbDescription: {The Hobbs weed infestation problem to estimate a 
+# NLSProbDescription: {The Hobbs weed infestation problem to estimate a
 #    3-parameter logistic S curve in its unscaled form from a reasonably
 #    easy starting point of (200, 50, 0.3)
 # }
@@ -31,8 +31,8 @@ NLSproblems <- read.table(system.file("extdata","problems.csv",
 NLSpars<-as.numeric(subset(NLSproblems,Name=="Hobbs_1.R")[6:(6+subset(NLSproblems,Name=="Hobbs_1.R")$nPars-1)])
 NLSssquares<-subset(NLSproblems,Name=="Hobbs_1.R")$ssquares
 NLStag<-"unbounded"
-NLSproblems[NLSproblems[,"Name"]=="Hobbs_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
-NLSproblems[NLSproblems[,"Name"]=="Hobbs_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
-write.table(NLSproblems,system.file("extdata","problems.csv",
-                                        package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
+# NLSproblems[NLSproblems[,"Name"]=="Hobbs_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
+# NLSproblems[NLSproblems[,"Name"]=="Hobbs_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
+# write.table(NLSproblems,system.file("extdata","problems.csv",
+#                                         package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
 rm(y,tt,b1,b2,b3)

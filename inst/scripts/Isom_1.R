@@ -24,7 +24,7 @@ iso.pen = c(37.1,  36.3,  49.4,  44.9, 116.3, 128.9, 134.4, 134.9,  87.6,  86.9,
 n.pent = c( 90.9,  92.9, 174.9, 187.2,  92.7, 102.2, 186.9, 192.6, 140.8, 144.2,  68.3,
 			214.6, 142.2, 146.7, 142.0, 143.7, 141.1, 141.5,  83.0, 209.6,  83.9, 294.4,
 			148.0, 291.0)
-	
+
 NLSdata <- data.frame(rate,hyd,iso.pen,n.pent)
 
 ## STARTING VALUE
@@ -48,8 +48,8 @@ NLSproblems <- read.table(system.file("extdata","problems.csv",
 NLSpars<-as.numeric(subset(NLSproblems,Name=="Isom_1.R")[6:(6+subset(NLSproblems,Name=="Isom_1.R")$nPars-1)])
 NLSssquares<-subset(NLSproblems,Name=="Isom_1.R")$ssquares
 NLStag<-"unbounded"
-NLSproblems[NLSproblems[,"Name"]=="Isom_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
-NLSproblems[NLSproblems[,"Name"]=="Isom_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
-write.table(NLSproblems,system.file("extdata","problems.csv",
-                                        package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
+# NLSproblems[NLSproblems[,"Name"]=="Isom_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
+# NLSproblems[NLSproblems[,"Name"]=="Isom_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
+# write.table(NLSproblems,system.file("extdata","problems.csv",
+#                                         package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
 rm(rate,hyd,iso.pen,n.pent,b2,b3,b4)
