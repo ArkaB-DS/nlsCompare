@@ -24,7 +24,8 @@ NLSlower<- c(-Inf,-Inf,-Inf,-Inf)
 NLSupper<- c(Inf,Inf,Inf,Inf)
 NLSsubset <- 1:length(time)
 NLSweights <- rep(1,length(time))
-NLSref<-"nlsr::nlxb"
+NLSref<-"nlsr"
+NLSrefVersion<-packageVersion(NLSref)
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLSpars<-coef(refsol)
 NLSssquares<-refsol$ssquares

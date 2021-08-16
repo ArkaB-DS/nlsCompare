@@ -16,6 +16,8 @@ NLSlower<- c(-Inf,-Inf)
 NLSupper<- c(Inf,Inf)
 NLStag<-"unbounded"
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
+NLSref<-"nlsr"
+NLSrefVersion<-packageVersion(NLSref)
 NLSpars<-coef(refsol)
 NLSssquares<-refsol$ssquares
 rm(xdata, ydata, p1, p2) # Normally remove these as we don't want to pollute the workspace
