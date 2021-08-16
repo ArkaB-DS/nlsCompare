@@ -28,7 +28,10 @@ NLSsubset <- 1:length(time)
 NLSref<-"nlsr"
 NLSrefVersion<-packageVersion(NLSref)
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
-NLSpars<-coef(refsol)
-NLSssquares<-refsol$ssquares
+NLSproblems <- read.table(system.file("extdata","problems.csv",
+                                        package="nlsCompare"),header=TRUE,sep=",")
+NLSpars<-as.numeric(subset(NLSproblems,Name=="BOD2_1.R")[4:(4+subset(NLSproblems,Name=="BOD2_1.R")$nPars-1)])
+NLSssquares<-subset(NLSproblems,Name=="BOD2_1.R")$ssquares
+subset(NLSproblems,Name=="BOD2_1.R")$PackageVersion<-paste(NLSref,NLSrefVersion,sep="|")
 NLStag<-"unbounded"
 rm(demand,time,A,lrc)

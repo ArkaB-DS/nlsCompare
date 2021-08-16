@@ -26,7 +26,7 @@ NLSsubset<-1:length(time)
 NLSref<-"nlsr"
 NLSrefVersion<-packageVersion(NLSref)
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
-NLSpars<-coef(refsol)
-NLSssquares<-refsol$ssquares
+NLSpars<-as.numeric(subset(NLSproblems,Name=="Rumford_1.R")[4:(4+subset(NLSproblems,Name=="Rumford_1.R")$nPars-1)])
+NLSssquares<-subset(NLSproblems,Name=="Rumford_1.R")$ssquares
 NLStag<-"unbounded"
 rm(time,temp,tc)
