@@ -32,6 +32,7 @@ NLSproblems <- read.table(system.file("extdata","problems.csv",
                                         package="nlsCompare"),header=TRUE,sep=",")
 NLSpars<-as.numeric(subset(NLSproblems,Name=="BOD2_1.R")[4:(4+subset(NLSproblems,Name=="BOD2_1.R")$nPars-1)])
 NLSssquares<-subset(NLSproblems,Name=="BOD2_1.R")$ssquares
-subset(NLSproblems,Name=="BOD2_1.R")$PackageVersion<-paste(NLSref,NLSrefVersion,sep="|")
+NLSproblems[NLSproblems[,"Name"]=="BOD2_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
+NLSproblems[NLSproblems[,"Name"]=="BOD2_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
 NLStag<-"unbounded"
 rm(demand,time,A,lrc)
