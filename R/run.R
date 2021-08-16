@@ -106,7 +106,7 @@ run<-function(machid,spreadsheet,spreadsheet_error){
       spreadsheet[problemNumber,8] <<- Deviance
       spreadsheet[problemNumber,9] <<- ifelse(isTRUE(all.equal(as.numeric(c(Deviance,
 									Parameters)),rep(1,2))),"Equal",
-							   ifelse(deviance(output)<NLSssquares,"Better","Bad"))
+							   ifelse(deviance(output)<NLSssquares,"Better","Worse"))
       spreadsheet[problemNumber,10] <<-  NLSref
       spreadsheet[problemNumber,11] <<-  NLStag
 
