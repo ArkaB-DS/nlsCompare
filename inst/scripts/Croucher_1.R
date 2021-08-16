@@ -16,12 +16,12 @@ NLSlower<- c(-Inf,-Inf)
 NLSupper<- c(Inf,Inf)
 NLStag<-"unbounded"
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
+NLSproblems <- read.table(system.file("extdata","problems.csv",
+                                        package="nlsCompare"),header=TRUE,sep=",")
 NLSref<-"nlsr"
 NLSrefVersion<-packageVersion(NLSref)
 NLSpars<-as.numeric(subset(NLSproblems,Name=="Croucher_1.R")[6:(6+subset(NLSproblems,Name=="Croucher_1.R")$nPars-1)])
 NLSssquares<-subset(NLSproblems,Name=="Croucher_1.R")$ssquares
-NLSproblems <- read.table(system.file("extdata","problems.csv",
-                                        package="nlsCompare"),header=TRUE,sep=",")
 NLSproblems[NLSproblems[,"Name"]=="Croucher_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
 NLSproblems[NLSproblems[,"Name"]=="Croucher_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
 write.table(NLSproblems,system.file("extdata","problems.csv",
