@@ -5,9 +5,6 @@
 # `length`: leaf length (cm).
 # }
 
-
-# Use the Isom data from NRAIA package
-
 ## DATA
 time=c( 0.5,  1.5,  2.5,  3.5,  4.5,  5.5,  6.5,  7.5,  8.5,  9.5, 10.5, 11.5, 12.5, 13.5,
 		  14.5)
@@ -20,11 +17,17 @@ Asym=3
 xmid=2
 scal=1
 NLSstart <-list(Asym=Asym,xmid=xmid,scal=scal) # a starting vector (named!)
-
+#tnls2 <- nls(NLSform2, data=NLSdata)
 ## MODEL
 NLSformula <-length ~ Asym/(1+exp((xmid-time)/scal))
+#NLSform2<-length ~ SSlogis(time, Asym, xmid, scal)
 NLSlower<- c(-Inf,-Inf,-Inf)
 NLSupper<- c(Inf,Inf,Inf)
 NLSsubset <- 1:length(time)
 NLSweights <- rep(1,length(time))
+refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
+NLSpars<-coef(refsol)
+NLSssquares<-refsol$ssquares
+NLStag<-"unbounded"
+NLsref<-"nlsr::nlxb"
 rm(time,length,Asym,xmid,scal)

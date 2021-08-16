@@ -4,9 +4,7 @@
 # The two columns are:This data frame contains the following columns:
 # `time`: a numeric vector giving the time since drug administration (min).
 # `conc`: a numeric vector giving the observed concentration of saccharin.
-
 # }
-
 
 # Use the Sacch2 data from NRAIA package
 
@@ -24,9 +22,14 @@ lCl=7
 NLSstart <- c(Dose=Dose,lKa=lKa,lKe=lKe,lCl=lCl) # a starting vector (named!)
 
 ## MODEL
-NLSformula <-conc ~ Dose * exp(lKe+lKa-lCl) * (exp(-exp(lKe)*time) - exp(-exp(lKa)*time))/(exp(lKa) - exp(lKe))
+NLSformula <-conc ~ Dose*exp(lKe+lKa-lCl)*(exp(-exp(lKe)*time) - exp(-exp(lKa)*time))/(exp(lKa) - exp(lKe))
 NLSlower<- c(-Inf,-Inf,-Inf,-Inf)
 NLSupper<- c(Inf,Inf,Inf,Inf)
 NLSweights <- rep(1,length(time))
 NLSsubset <- 1:length(time)
-rm(Dose,lKa,lKe,lCl,time,conc)
+refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
+NLSpars<-coef(refsol)
+NLSssquares<-refsol$ssquares
+NLStag<-"unbounded"
+NLsref<-"nlsr::nlxb"
+rm(time,conc,Dose,lKa,lKe,lCl)

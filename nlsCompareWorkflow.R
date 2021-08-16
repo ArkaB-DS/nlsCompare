@@ -1,11 +1,10 @@
 library(nlsCompare)
 machid<-machineId()
 setup_dir()
-#getwd()
 spreadsheet <- create_db()
 spreadsheet_error <- create_elog()
 csv_exists()
-run(machid,spreadsheet,spreadsheet_error)# uphill search?>positive
+run(machid,spreadsheet,spreadsheet_error)
 write_csvs(spreadsheet,spreadsheet_error)
 rm_nls()
 

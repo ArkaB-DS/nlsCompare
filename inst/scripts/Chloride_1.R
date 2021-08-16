@@ -1,6 +1,7 @@
 # NLSProbName: Chloride_1.R
 # NLSProbDescription: { The Chloride data frame has 54 rows and 2 columns representing measurements of the chloride
 # ion concentration in blood cells suspended in a salt solution.
+
 # The two columns are:
 # `conc`: A numeric vector giving the chloride ion concentration (%).
 # `time`: A numeric vector giving the time of the concentration measurement (min).
@@ -35,4 +36,9 @@ NLSlower<- c(-Inf,-Inf,-Inf)
 NLSupper<- c(Inf,Inf,Inf)
 NLSweights <- rep(1,length(time))
 NLSsubset <- 1:length(time)
+refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
+NLSpars<-coef(refsol)
+NLSssquares<-refsol$ssquares
+NLStag<-"unbounded"
+NLsref<-"nlsr::nlxb"
 rm(conc,time,Asym,prop,lrc)

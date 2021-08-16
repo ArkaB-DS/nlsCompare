@@ -14,4 +14,5 @@ NLSweights <- rep(1, length(xdata))
 NLSsubset<-1:length(xdata)
 NLSlower<- c(-Inf,-Inf)
 NLSupper<- c(Inf,Inf)
+NLStag<-"unbounded"
 rm(xdata, ydata, p1, p2) # Normally remove these as we don't want to pollute the workspace

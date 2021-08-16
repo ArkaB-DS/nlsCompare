@@ -11,8 +11,8 @@
 demand <- c(0.47, 0.74, 1.17, 1.42, 1.60, 1.84, 2.19, 2.17)
 time <- c( 1,  2,  3,  4,  5,  7,  9, 11)
 
-## DATA 
-NLSdata <- data.frame(demand,time) 
+## DATA
+NLSdata <- data.frame(demand,time)
 
 ## STARTING VALUE
 A = 2.2
@@ -25,4 +25,10 @@ NLSlower<- c(-Inf,-Inf)
 NLSupper<- c(Inf,Inf)
 NLSweights <- rep(1,length(time)) ## ?? Find better weights
 NLSsubset <- 1:length(time)
-rm(demand,time,A,lrc) 
+rm(demand,time,A,lrc)
+refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
+NLSpars<-coef(refsol)
+NLSssquares<-refsol$ssquares
+NLStag<-"unbounded"
+NLSref<-"nlsr::nlxb"
+rm(demand,time,A,lrc)

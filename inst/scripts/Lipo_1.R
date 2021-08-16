@@ -5,9 +5,6 @@
 # `conc`:  a numeric vector of concentrations.
 # }
 
-
-# Use the Isom data from NRAIA package
-
 ## DATA
 time=c( 0.5,  1.0,  1.5,  2.0,  3.0,  4.0,  5.0,  6.0,  7.0,  8.0,  9.0, 10.0)
 conc = c( 46.10, 25.90, 17.00, 12.10,  7.22,  4.51,  3.19,  2.40,  1.82,  1.41,  1.00,
@@ -27,4 +24,9 @@ NLSlower<- c(-Inf,-Inf,-Inf,-Inf)
 NLSupper<- c(Inf,Inf,Inf,Inf)
 NLSsubset <- 1:length(time)
 NLSweights <- rep(1,length(time))
-rm(time, conc, lrc1,lrc2,A1,A2) 
+refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
+NLSpars<-coef(refsol)
+NLSssquares<-refsol$ssquares
+NLStag<-"unbounded"
+NLsref<-"nlsr::nlxb"
+rm(time,conc,lrc1,lrc2,A1,A2)

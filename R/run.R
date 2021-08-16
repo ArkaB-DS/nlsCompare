@@ -1,162 +1,117 @@
 run<-function(machid,spreadsheet,spreadsheet_error){
-  #data(problems,package="nlsCompare",envir = environment())
-  #data(methods,package="nlsCompare",envir = environment())
+
+  ## get the problem names
   NLSproblems <- read.table(system.file("extdata","problems.csv",
                                         package="nlsCompare"),header=TRUE,sep=",")
+  ## get the methods to be applied
   NLSmethods <- read.table(system.file("extdata","methods.csv",
                                        package="nlsCompare"),header=TRUE,sep=",")
 
+  ## set counters for row number of csvs
   problemNumber <- 1
   errorNumber <- 1
 
   for(i in 1:nrow(NLSproblems)){
-    #source(paste("R\\test_files\\",NLSproblems$Name[i],sep=""))
     source(system.file("scripts",NLSproblems$Name[i],package="nlsCompare"))
     cat("Sourced problem number",i,"\n")
     for(j in 1:nrow(NLSmethods)){
       cat("Using method number",j,"\n")
-      errorNLSFlag <- 0
-      errorOtherFlag<-0
-      #if(NLSmethods[j,1]=="nlsr::nlxb"){
-      #	NLSrunline <- "(formula=NLSformula, data=NLSdata, start=NLSstart,
-      #			    control=List)"
-      #}else{###ERROR:Error: $ operator is invalid for atomic vectors
-      NLSrunline <- "(formula=NLSformula, data=NLSdata, start=NLSstart,
-					lower=NLSlower,upper=NLSupper,
-					weights=NLSweights,
-					subset=NLSsubset,
-					#na.action=
-					algorithm=NLSmethods$algorithm[j],
-					control=eval(parse(text=NLSmethods$control[j])))"
-      ## This is the runline with default algorithm when comparing "marquardt" of nlsj
-      NLSrunline0 <- "(formula=NLSformula, data=NLSdata, start=NLSstart,
-					lower=NLSlower,upper=NLSupper,
-					weights=NLSweights,
-					subset=NLSsubset,
-					#na.action=
-					control=eval(parse(text=NLSmethods$control[j])))"
-      #}
-      if (NLSmethods$algorithm[j]=="marquardt"){
-        checker.nls<-try(output_nls <- eval(parse(text=paste("nls",NLSrunline0))),silent=TRUE)
-      }else{
-        checker.nls<-try(output_nls <- eval(parse(text=paste("nls",NLSrunline))),silent=TRUE)
-      }
-      if (inherits(checker.nls,"try-error")) {
-        errorNLSFlag = errorNLSFlag + 1
-      }
-      checker.other<-try(output <- eval(parse(text=paste(NLSmethods[j,1],NLSrunline))),silent=TRUE)
-      if (inherits(checker.other,"try-error")) {
-        errorOtherFlag = errorOtherFlag + 1
-      }
-      if (errorNLSFlag==1 | errorOtherFlag==1 ){
-        errorNumber <-errorNumber + 1
-        spreadsheet_error[errorNumber,3]<<-NLSmethods[j,1]
+
+      NLSsolver=NLSmethods[j,1]
+	    NLSalgorithm=NLSmethods[j,2]
+	    NLScontrol=eval(parse(text=NLSmethods[j,3]))
+
+	    NLSrunline<-create_runline(NLSsolver,NLSalgorithm,
+			NLScontrol,NLSdata,NLSstart,NLSlower,
+			NLSupper,NLSweights,NLSsubset
+			#,na.action=NULL,
+			#masked=NULL,
+			)
+
+	    ## check if there is any error in creating a nls model
+	    ## if yes, write it in the error log and mention ERROR in nlsDatabase
+	    check.output<-try(output <- eval(parse(text=paste(NLSmethods[j,1],NLSrunline))),silent=TRUE)
+      if (inherits(check.output,"try-error")) {
+        ## fill in error log dataframe
+        spreadsheet_error[errorNumber,1]<<-format(Sys.time(), "%Y-%m-%d %H:%M")
+        spreadsheet_error[errorNumber,2]<<-machid
+        spreadsheet_error[errorNumber,3]<<-NLSproblems$Name[i]
+        spreadsheet_error[errorNumber,4]<<-NLSmethods[j,1]
         spreadsheet_error[errorNumber,5]<<-NLSmethods[j,2]
         spreadsheet_error[errorNumber,6]<<-NLSmethods[j,3]
-        spreadsheet_error[errorNumber,8]<<-machid
-        spreadsheet_error[errorNumber,2]<<-NLSproblems$Name[i]
-        spreadsheet_error[errorNumber,1]<<-format(Sys.time(), "%Y-%m-%d %H:%M")
+        spreadsheet_error[errorNumber,7]<<-attr(check.output,"condition")$message
+        errorNumber <-errorNumber + 1
 
-        if(errorNLSFlag==1 & errorOtherFlag==0){
-          spreadsheet_error[errorNumber,4]<<-"NLS fails."
-          spreadsheet_error[errorNumber,7]<<-attr(checker.nls,"condition")$message
+        ## fill in nlsDatabase dataframe
+	      spreadsheet[problemNumber,1] <<- format(Sys.time(), "%Y-%m-%d %H:%M")
+        spreadsheet[problemNumber,2] <<- machid
+        spreadsheet[problemNumber,3] <<- NLSproblems$Name[i]
+        spreadsheet[problemNumber,4] <<- NLSmethods[j,1]
+        spreadsheet[problemNumber,5] <<- NLSmethods[j,2]
+        spreadsheet[problemNumber,6] <<- NLSmethods[j,3]
+        spreadsheet[problemNumber,9] <<-  "ERROR"
+        spreadsheet[problemNumber,10] <<-  NLSref
+        spreadsheet[problemNumber,11] <<-  NLStag
+        problemNumber <- problemNumber +1
 
-        }else if (errorNLSFlag==0 & errorOtherFlag==1){
-          spreadsheet_error[errorNumber,4]<<-paste(NLSmethods$solver[j]," fails.",sep="")
-          spreadsheet_error[errorNumber,7]<<-attr(checker.other,"condition")$message
-        } else if (errorNLSFlag==1 & errorOtherFlag==1){
-          spreadsheet_error[errorNumber,7]<<-paste(attr(checker.nls,"condition")$message,
-                                                  attr(checker.other,"condition")$message,
-                                                  sep="|")
-          spreadsheet_error[errorNumber,4]<<- "Both fail."
-        }
+        ## no need to do the comparisons below
         next
-      }
-      #### TESTING
+	      }
+
+      ## TESTING
 
       ## SETTING TOLERANCE
       epstol <- sqrt(.Machine$double.eps*100) # Can replace 100 with nls.control()$offset
 
-      ## residuals
-      checker.resid<-try(Residuals<-all.equal(as.vector(resid(output_nls)),
-                                              as.vector(resid(output)),
-                                              tolerance=epstol*(max(abs(c(as.vector(resid(output_nls)),
-                                                                          as.vector(resid(output)))
-                                              )) + epstol)))
-      if(inherits(checker.resid,"try-error")){
-        Residuals <- attr(checker.resid,"condition")$message
-      }
+      ## residuals ## ALTERNATIVE TO TESTING SUM OF SQUARES
+      #checker.resid<-try(Residuals<-all.equal(NLSssquares,
+      #                                       sum(as.vector(resid(output))^2),
+      #                                        tolerance=epstol*(max(abs(c(NLSssquares,
+      #                                                                    sum(as.vector(resid(output))^2))
+      #                                        )) + epstol)))
+      #if(inherits(checker.resid,"try-error")){
+      #  Residuals <- attr(checker.resid,"condition")$message
+      #}
+	    #Residuals<-numeric_output(Residuals)
 
-      #	## fitted
-      #	all.equal(as.vector(fitted(output_nls)),
-      #		    as.vector(fitted(output)),
-      #		    tolerance=epstol*(max(abs(c(as.vector(fitted(output_nls)),
-      #					as.vector(fitted(output)))
-      #					)) + epstol))
       ## deviance
-      checker.dev<-try(Deviance<-all.equal(deviance(output_nls),
-                                           deviance(output)))
-      if(inherits(checker.dev,"try-error")){
-        Deviance <- attr(checker.dev,"condition")$message
+      check.dev<-try(Deviance<-all.equal(NLSssquares,
+                                           deviance(output),
+							 tolerance=epstol*(max(abs(c(NLSssquares,deviance(output))))
+								+epstol)))
+      if(inherits(check.dev,"try-error")){
+        Deviance <- attr(check.dev,"condition")$message
       }
+      Deviance<-numeric_output(Deviance)
 
-      ## gradient
-      checker.grad<-try(Gradient<-all.equal( output_nls$m$gradient(),
-                                             output$m$gradient()))
-      if(inherits(checker.grad,"try-error")){
-        Gradient <- attr(checker.grad,"condition")$message
+       ## parameters
+      check.pars<-try(Parameters<-all.equal( 	as.numeric(NLSpars),
+                                               	as.numeric(output$m$getPars()),
+								tolerance=epstol*(max(abs(c(as.numeric(NLSpars),
+												as.numeric(output$m$getPars()))))
+								+epstol)))
+      if(inherits(check.pars,"try-error")){
+        Parameters <- attr(check.pars,"condition")$message
       }
+	    Parameters<-numeric_output(Parameters)
 
-      ## getPars # difference between getAllPars and getPars?
-      checker.pars<-try(Parameters<-all.equal( output_nls$m$getPars(),
-                                               output$m$getPars()))
-      if(inherits(checker.pars,"try-error")){
-        Parameters <- attr(checker.pars,"condition")$message
-      }
+	    ## fill in nlsDatabase dataframe
+	    spreadsheet[problemNumber,1] <<- format(Sys.time(), "%Y-%m-%d %H:%M")
+	    spreadsheet[problemNumber,2] <<- machid
+	    spreadsheet[problemNumber,3] <<- NLSproblems$Name[i]
+      spreadsheet[problemNumber,4] <<- NLSmethods[j,1]
+      spreadsheet[problemNumber,5] <<- NLSmethods[j,2]
+      spreadsheet[problemNumber,6] <<- NLSmethods[j,3]
+      spreadsheet[problemNumber,7] <<- Parameters
+      spreadsheet[problemNumber,8] <<- Deviance
+      spreadsheet[problemNumber,9] <<- ifelse(isTRUE(all.equal(as.numeric(c(Deviance,
+									Parameters)),rep(1,2))),"Equal",
+							   ifelse(deviance(output)<NLSssquares,"Better","Bad"))
+      spreadsheet[problemNumber,10] <<-  NLSref
+      spreadsheet[problemNumber,11] <<-  NLStag
 
-      ## Rmat
-      checker.rmat<-try(Rmat<-all.equal( as.numeric(output_nls$m$Rmat()), #!!!!NOTE THIS
-                                         as.numeric(output$m$Rmat())))
-      if(inherits(checker.rmat,"try-error")){
-        Rmat <- attr(checker.rmat,"condition")$message
-      }
-
-      #	## predict
-      #	all.equal( output_nls$m$predict(),
-      #			  output$m$predict())
-
-      ## testing convInfo # FAILED
-      checker.conv<-try(Convergence<-all.equal(as.numeric(output_nls$convInfo$isConv),
-                                               as.numeric(ifelse(NLSmethods[j,1]=="minpack.lm::nlsLM",
-                                                                 output$convInfo$isConv,output$convInfo))))
-      if(inherits(checker.conv,"try-error")){
-        Convergence <- attr(checker.conv,"condition")$message
-      }
-
-      ## write in spreadsheet
-      spreadsheet[problemNumber,3] <<- NLSmethods[j,1]
-      spreadsheet[problemNumber,4] <<- NLSmethods[j,2]
-      spreadsheet[problemNumber,5] <<- NLSmethods[j,3]
-
-      spreadsheet[problemNumber,14] <<- machid
-      spreadsheet[problemNumber,2] <<- NLSproblems$Name[i]
-      spreadsheet[problemNumber,6] <<- Residuals
-      spreadsheet[problemNumber,7] <<- Deviance
-      spreadsheet[problemNumber,8] <<-  Gradient
-      spreadsheet[problemNumber,9] <<- Parameters
-      spreadsheet[problemNumber,10]<<- Rmat
-      spreadsheet[problemNumber,11] <<- Convergence
-      spreadsheet[problemNumber,12] <<- ifelse(isTRUE(all.equal(as.numeric(c(Residuals,Deviance,
-                                                                            Gradient,
-                                                                            Parameters,Rmat,Convergence)),rep(1,6))),"Passed",
-                                              ifelse(isTRUE(all.equal(as.numeric(c(Residuals,Deviance,
-                                                                                   #radient,
-                                                                                   Parameters,Rmat,Convergence)),rep(0,6))),"Failed",
-                                                     "Indeterminate"))
-      spreadsheet[problemNumber,1] <<- format(Sys.time(), "%Y-%m-%d %H:%M")
-      (problemNumber <- problemNumber +1)
+      problemNumber <- problemNumber +1
     }
     cat("Successful problem-->",i,"\n")
   }
-
 }

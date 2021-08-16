@@ -4,9 +4,7 @@
 # The two columns are:This data frame contains the following columns:
 # `time`:  a numeric vector giving the time since the beginning of the experiment (hr)
 # `temp`:  a numeric vector giving the temperature (degrees Fahrenheit) of the cannon.
-
-# }
-
+# The model has just 1 parameter.}
 
 # Use the Rumford data from NRAIA package
 ## DATA
@@ -25,4 +23,9 @@ NLSlower<- c(-Inf)
 NLSupper<- c(Inf)
 NLSweights <- rep(1, length(time))
 NLSsubset<-1:length(time)
-rm(tc,time, temp)
+refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
+NLSpars<-coef(refsol)
+NLSssquares<-refsol$ssquares
+NLStag<-"unbounded"
+NLsref<-"nlsr::nlxb"
+rm(time,temp,tc)

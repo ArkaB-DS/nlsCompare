@@ -39,4 +39,10 @@ NLSlower<- c(-Inf,-Inf,-Inf)
 NLSupper<- c(Inf,Inf,Inf)
 NLSweights <- rep(1,length(n.pent))
 NLSsubset <- 1:length(n.pent)
-rm(b2,b3,b4,rate,hyd,iso.pen,n.pent)
+NLSstart1 <-c(b1=1, b2 = b2, b3 = b3, b4 = b4) # a starting vector (named!)
+refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
+NLSpars<-coef(refsol)
+NLSssquares<-refsol$ssquares
+NLStag<-"unbounded"
+NLsref<-"nlsr::nlxb"
+rm(rate,hyd,iso.pen,n.pent,b2,b3,b4)

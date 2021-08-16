@@ -8,5 +8,6 @@ rm_nls <- function(){
      errorNumber,errorNLSFlag,checker.mat,checker.resid,checker.pars,
      checker.rmat.checker.resid,checker.pars,checker.other,checker.nls,
      checker.grad,checker.dev,checker.conv,checker.rmat,NLSrunline0,
+     NLSssquares,NLSpars,refsol,
      envir=.GlobalEnv)
 }
