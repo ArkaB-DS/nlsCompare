@@ -1,3 +1,1 @@
-importFrom("stats", "deviance")
-importFrom("utils", "read.table", "write.table")
-
+exportPattern("^[^\\.]")
