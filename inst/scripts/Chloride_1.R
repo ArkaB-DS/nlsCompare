@@ -38,8 +38,15 @@ NLSweights <- rep(1,length(time))
 NLSsubset <- 1:length(time)
 NLSref<-"nlsr"
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
-NLSpars<-as.numeric(subset(NLSproblems,Name=="BOD2_1.R")[4:(4+subset(NLSproblems,Name=="BOD2_1.R")$nPars-1)])
-NLSssquares<-subset(NLSproblems,Name=="BOD2_1.R")$ssquares
+NLSpars<-as.numeric(subset(NLSproblems,Name=="Chloride_1.R")[6:(6+subset(NLSproblems,Name=="Chloride_1.R")$nPars-1)])
+NLSssquares<-subset(NLSproblems,Name=="Chloride_1.R")$ssquares
 NLStag<-"unbounded"
 NLSrefVersion<-packageVersion(NLSref)
+NLSproblems <- read.table(system.file("extdata","problems.csv",
+                                        package="nlsCompare"),header=TRUE,sep=",")
+NLSproblems[NLSproblems[,"Name"]=="Chloride_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
+NLSproblems[NLSproblems[,"Name"]=="Chloride_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
+write.table(NLSproblems,system.file("extdata","problems.csv",
+                                        package="nlsCompare"),append=TRUE,sep=",",col.names=FALSE,row.names=FALSE)
+
 rm(conc,time,Asym,prop,lrc)

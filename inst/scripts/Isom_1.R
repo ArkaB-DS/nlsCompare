@@ -43,7 +43,13 @@ NLSsubset <- 1:length(n.pent)
 NLSref<-"nlsr"
 NLSrefVersion<-packageVersion(NLSref)
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
-NLSpars<-as.numeric(subset(NLSproblems,Name=="Isom_1.R")[4:(4+subset(NLSproblems,Name=="Isom_1.R")$nPars-1)])
+NLSpars<-as.numeric(subset(NLSproblems,Name=="Isom_1.R")[6:(6+subset(NLSproblems,Name=="Isom_1.R")$nPars-1)])
 NLSssquares<-subset(NLSproblems,Name=="Isom_1.R")$ssquares
 NLStag<-"unbounded"
+NLSproblems <- read.table(system.file("extdata","problems.csv",
+                                        package="nlsCompare"),header=TRUE,sep=",")
+NLSproblems[NLSproblems[,"Name"]=="Isom_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
+NLSproblems[NLSproblems[,"Name"]=="Isom_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
+write.table(NLSproblems,system.file("extdata","problems.csv",
+                                        package="nlsCompare"),append=TRUE,sep=",",col.names=FALSE,row.names=FALSE)
 rm(rate,hyd,iso.pen,n.pent,b2,b3,b4)
