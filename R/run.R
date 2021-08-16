@@ -43,7 +43,7 @@ run<-function(machid,spreadsheet,spreadsheet_error){
         errorNumber <-errorNumber + 1
 
         ## fill in nlsDatabase dataframe
-	      spreadsheet[problemNumber,1] <<- format(Sys.time(), "%Y-%m-%d %H:%M")
+	  spreadsheet[problemNumber,1] <<- format(Sys.time(), "%Y-%m-%d %H:%M")
         spreadsheet[problemNumber,2] <<- machid
         spreadsheet[problemNumber,3] <<- NLSproblems$Name[i]
         spreadsheet[problemNumber,4] <<- NLSmethods[j,1]
