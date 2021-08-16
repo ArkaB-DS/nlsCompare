@@ -15,3 +15,7 @@ Description: This package attempts to compare `nls` with other existing packages
 License: GPL-2 | GPL-3 
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
