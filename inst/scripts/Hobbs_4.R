@@ -19,6 +19,6 @@ NLSproblems <- read.table(system.file("extdata","problems.csv",
 NLSproblems[NLSproblems[,"Name"]=="Hobbs_4.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
 NLSproblems[NLSproblems[,"Name"]=="Hobbs_4.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
 write.table(NLSproblems,system.file("extdata","problems.csv",
-                                        package="nlsCompare"),append=TRUE,sep=",",col.names=FALSE,row.names=FALSE)
+                                        package="nlsCompare"),append=FALSE,sep=",",col.names=FALSE,row.names=FALSE)
 
 
