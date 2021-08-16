@@ -9,4 +9,3 @@ NLSstart <- list(b1=1,b2=1,b3=1) # Infeasible start
 NLSlower <- c(0,0,0)
 NLSupper <- c(b1=500,b2=100,b3=.25)
 NLStag<-"bounded; bad start"
-NLsref<-"nlsr::nlxb"

@@ -25,10 +25,9 @@ NLSlower<- c(-Inf,-Inf)
 NLSupper<- c(Inf,Inf)
 NLSweights <- rep(1,length(time)) ## ?? Find better weights
 NLSsubset <- 1:length(time)
-rm(demand,time,A,lrc)
+NLSref<-"nlsr::nlxb"
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLSpars<-coef(refsol)
 NLSssquares<-refsol$ssquares
 NLStag<-"unbounded"
-NLSref<-"nlsr::nlxb"
 rm(demand,time,A,lrc)

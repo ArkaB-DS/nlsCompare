@@ -8,8 +8,8 @@
 NLSstart <- list(b1=1,b2=1,b3=.1)
 NLSlower <- c(0,0,0)
 NLSupper <- c(b1=500,b2=100,b3=5)
+NLSref<-"nlsr::nlxb"
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLStag<-"bounded"
-NLsref<-"nlsr::nlxb"
 NLSpars<-coef(refsol)
 NLSssquares<-refsol$ssquares

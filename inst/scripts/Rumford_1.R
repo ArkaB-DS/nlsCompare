@@ -23,9 +23,9 @@ NLSlower<- c(-Inf)
 NLSupper<- c(Inf)
 NLSweights <- rep(1, length(time))
 NLSsubset<-1:length(time)
+NLSref<-"nlsr::nlxb"
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLSpars<-coef(refsol)
 NLSssquares<-refsol$ssquares
 NLStag<-"unbounded"
-NLsref<-"nlsr::nlxb"
 rm(time,temp,tc)
