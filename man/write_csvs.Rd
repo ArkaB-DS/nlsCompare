@@ -29,5 +29,6 @@ Currently, only files with ".csv" format are written, with names "nlsDatabase.cs
 \code{\link{write.table}}
 }
 \examples{
-write_csvs(database,errorlog) #?? better example
+## NOT RUN
+# write_csvs(database,errorlog)
 }
