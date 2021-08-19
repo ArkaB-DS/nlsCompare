@@ -1,49 +1,32 @@
 \name{machineId}
 \alias{machineId}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
 Generate a one-line machine summary
 }
 \description{
-
+This function creates an informative machine summary that can be used to characterize a machine.
 }
 \usage{
 machineId()
 }
-%- maybe also 'usage' for other objects documented here.
+
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+The function gives the nodename, the username, the OS name, the OS release, the CPU model name and RAM (in gigabytes).
 }
 \value{
-Returns a string with machine summary information.
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
+Returns a string.
 }
 \note{
-%%  ~~further notes~~
+`benchmarkme::get_ram()` returns "NA B" for Windows 10. So, a windows specific workaround has been used in it viz. "sum(as.numeric(system('wmic MemoryChip get Capacity',intern=TRUE)),na.rm=T)/1024^3" to get the RAM size in gigabytes.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{Sys.info}}, \code{\link{get_ram}}, \code{\link{get_cpu}}, \code{\link{system}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
+machid <- machineId()
+machid
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory (show via RShowDoc("KEYWORDS")):
-% \keyword{ ~kwd1 }
-% \keyword{ ~kwd2 }
-% Use only one keyword per line.
-% For non-standard keywords, use \concept instead of \keyword:
-% \concept{ ~cpt1 }
-% \concept{ ~cpt2 }
-% Use only one concept per line.
