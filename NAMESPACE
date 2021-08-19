@@ -1,3 +1,5 @@
 exportPattern("^[^\\.]")
 importFrom("stats", "deviance")
 importFrom("utils", "read.table", "write.table")
+importFrom("choose_dir")
+importFrom("get_ram","get_cpu")
