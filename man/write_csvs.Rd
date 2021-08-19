@@ -1,7 +1,7 @@
 \name{write_csvs}
 \alias{write_csvs}
 \title{
-Write csv files of the dataframes created by `run()`
+Write csv files of the dataframes created by \code{run()}
 }
 \description{
 This function creates csv files named "nlsDatabase.csv" and "nlsErrorLog.csv" which contain the comparison results of different packages' functions for nls with base `nls`.
@@ -19,7 +19,7 @@ Takes in the dataframe created by `create_elog()` and modified by `run()`.
 }
 }
 \details{
-The two list items returned by `run()`, which are the modified database and errorlog dataframes created by `create_db` and `create_elog()`,  are written into csv files named "nlsDatabase.csv" and "nlsErrorLog.csv" in the directory chosen by `setup_dir()`.
+The two list items returned by \code{run()}, which are the modified database and errorlog dataframes created by \code{create_db} and \code{create_elog()},  are written into csv files named "nlsDatabase.csv" and "nlsErrorLog.csv" in the directory chosen by \code{setup_dir()}.
 }
 \note{
 Currently, only files with ".csv" format are written, with names "nlsDatabase.csv" and "nlsErrorLog.csv".
