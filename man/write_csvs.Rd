@@ -19,7 +19,7 @@ Takes in the dataframe created by `create_elog()` and modified by `run()`.
 }
 }
 \details{
-The two list items returned by \code{run()}, which are the modified database and errorlog dataframes created by \code{create_db} and \code{create_elog()},  are written into csv files named "nlsDatabase.csv" and "nlsErrorLog.csv" in the directory chosen by \code{setup_dir()}.
+The two list items returned by \code{run()}, which are the modified database and errorlog dataframes created by \code{create_db()} and \code{create_elog()},  are written into csv files named "nlsDatabase.csv" and "nlsErrorLog.csv" in the directory chosen by \code{setup_dir()}.
 }
 \note{
 Currently, only files with ".csv" format are written, with names "nlsDatabase.csv" and "nlsErrorLog.csv".
