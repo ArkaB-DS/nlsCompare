@@ -4,7 +4,7 @@
 Setup directory
 }
 \description{
-Choose a directory to save the final output (csv files) created by the `run` function.
+Choose a directory to save the final output (csv files) created by \code{run()}.
 }
 \usage{
 setup_dir()
