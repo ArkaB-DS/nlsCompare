@@ -1,9 +1,8 @@
 machineId <- function(){
   options(warn=-1) #  include this ??
   sy<-Sys.info()
-  cpu<-benchmarkme::get_cpu() #??where to include benchmarkme, get_ram, get_cpu
-  ramtry<-as.numeric( benchmarkme::get_ram() ) #??
-
+  cpu<-benchmarkme::get_cpu()
+  ramtry<-as.numeric( benchmarkme::get_ram() )
   if (!anyNA(ramtry)) {
     ram <- ramtry/(1024^3)
   } else {
