@@ -18,7 +18,7 @@ The function gives the nodename, the username, the OS name, the OS release, the 
 Returns a string.
 }
 \note{
-`benchmarkme::get_ram()` returns "NA B" for Windows 10. So, a windows specific workaround has been used in it viz. "sum(as.numeric(system('wmic MemoryChip get Capacity',intern=TRUE)),na.rm=T)/1024^3" to get the RAM size in gigabytes.
+\code{benchmarkme::get_ram()} returns "NA B" for Windows 10. So, a windows specific workaround has been used in it viz. \code{sum(as.numeric(system('wmic MemoryChip get Capacity',intern=TRUE)),na.rm=T)/1024^3} to get the RAM size in gigabytes.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
