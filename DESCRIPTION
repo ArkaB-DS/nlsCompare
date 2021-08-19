@@ -1,11 +1,10 @@
 Package: nlsCompare
 Type: Package
 date: 2021-08-06
-#depends:
 Title: Compare existing packages' functions on nonlinear least squares with `nls` (base)
 Version: 0.1.0
 Imports: easycsv, benchmarkme, nlsr, minpack.lm, nlsj
-Remotes:url::https://gitlab.com/nashjc/improvenls/-/blob/master/nlsj_0.1.0.tar.gz
+Remotes:url::https://gitlab.com/nashjc/improvenls/-/blob/master/improvenls-master-nlsj.zip
 Suggests: devtools, testthat
 Author: Arkajyoti Bhattacharjee
 Maintainer: Arkajyoti Bhattacharjee <arkastat98@gmail.com>
