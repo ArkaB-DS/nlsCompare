@@ -18,7 +18,7 @@ Returns a dataframe.
 }
 
 \seealso{
-\code{\link{data.frame}}
+\code{\link{create_elog}}, \code{\link{write_csvs}}, \code{\link{data.frame}}
 }
 \examples{
 database <- create_db()
