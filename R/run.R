@@ -1,4 +1,4 @@
-run<-function(machid,spreadsheet,spreadsheet_error){
+run<-function(machid,database,errorlog){
 
   ## get the problem names
   NLSproblems <- read.table(system.file("extdata","problems.csv",
@@ -33,25 +33,25 @@ run<-function(machid,spreadsheet,spreadsheet_error){
 	    check.output<-try(output <- eval(parse(text=paste(NLSmethods[j,1],NLSrunline))),silent=TRUE)
       if (inherits(check.output,"try-error")) {
         ## fill in error log dataframe
-        spreadsheet_error[errorNumber,1]<<-format(Sys.time(), "%Y-%m-%d %H:%M")
-        spreadsheet_error[errorNumber,2]<<-machid
-        spreadsheet_error[errorNumber,3]<<-NLSproblems$Name[i]
-        spreadsheet_error[errorNumber,4]<<-NLSmethods[j,1]
-        spreadsheet_error[errorNumber,5]<<-NLSmethods[j,2]
-        spreadsheet_error[errorNumber,6]<<-NLSmethods[j,3]
-        spreadsheet_error[errorNumber,7]<<-attr(check.output,"condition")$message
+        errorlog[errorNumber,1]<-format(Sys.time(), "%Y-%m-%d %H:%M")
+        errorlog[errorNumber,2]<-machid
+        errorlog[errorNumber,3]<-NLSproblems$Name[i]
+        errorlog[errorNumber,4]<-NLSmethods[j,1]
+        errorlog[errorNumber,5]<-NLSmethods[j,2]
+        errorlog[errorNumber,6]<-NLSmethods[j,3]
+        errorlog[errorNumber,7]<-attr(check.output,"condition")$message
         errorNumber <-errorNumber + 1
 
         ## fill in nlsDatabase dataframe
-	  spreadsheet[problemNumber,1] <<- format(Sys.time(), "%Y-%m-%d %H:%M")
-        spreadsheet[problemNumber,2] <<- machid
-        spreadsheet[problemNumber,3] <<- NLSproblems$Name[i]
-        spreadsheet[problemNumber,4] <<- NLSmethods[j,1]
-        spreadsheet[problemNumber,5] <<- NLSmethods[j,2]
-        spreadsheet[problemNumber,6] <<- NLSmethods[j,3]
-        spreadsheet[problemNumber,9] <<-  "ERROR"
-        spreadsheet[problemNumber,10] <<-  NLSref
-        spreadsheet[problemNumber,11] <<-  NLStag
+	      database[problemNumber,1] <- format(Sys.time(), "%Y-%m-%d %H:%M")
+        database[problemNumber,2] <- machid
+        database[problemNumber,3] <- NLSproblems$Name[i]
+        database[problemNumber,4] <- NLSmethods[j,1]
+        database[problemNumber,5] <- NLSmethods[j,2]
+        database[problemNumber,6] <- NLSmethods[j,3]
+        database[problemNumber,9] <-  "ERROR"
+        database[problemNumber,10] <-  NLSref
+        database[problemNumber,11] <-  NLStag
         problemNumber <- problemNumber +1
 
         ## no need to do the comparisons below
@@ -96,22 +96,23 @@ run<-function(machid,spreadsheet,spreadsheet_error){
 	    Parameters<-numeric_output(Parameters)
 
 	    ## fill in nlsDatabase dataframe
-	    spreadsheet[problemNumber,1] <<- format(Sys.time(), "%Y-%m-%d %H:%M")
-	    spreadsheet[problemNumber,2] <<- machid
-	    spreadsheet[problemNumber,3] <<- NLSproblems$Name[i]
-      spreadsheet[problemNumber,4] <<- NLSmethods[j,1]
-      spreadsheet[problemNumber,5] <<- NLSmethods[j,2]
-      spreadsheet[problemNumber,6] <<- NLSmethods[j,3]
-      spreadsheet[problemNumber,7] <<- Parameters
-      spreadsheet[problemNumber,8] <<- Deviance
-      spreadsheet[problemNumber,9] <<- ifelse(isTRUE(all.equal(as.numeric(c(Deviance,
+	    database[problemNumber,1] <- format(Sys.time(), "%Y-%m-%d %H:%M")
+	    database[problemNumber,2] <- machid
+	    database[problemNumber,3] <- NLSproblems$Name[i]
+      database[problemNumber,4] <- NLSmethods[j,1]
+      database[problemNumber,5] <- NLSmethods[j,2]
+      database[problemNumber,6] <- NLSmethods[j,3]
+      database[problemNumber,7] <- Parameters
+      database[problemNumber,8] <- Deviance
+      database[problemNumber,9] <- ifelse(isTRUE(all.equal(as.numeric(c(Deviance,
 									Parameters)),rep(1,2))),"Equal",
 							   ifelse(deviance(output)<NLSssquares,"Better","Worse"))
-      spreadsheet[problemNumber,10] <<-  NLSref
-      spreadsheet[problemNumber,11] <<-  NLStag
+      database[problemNumber,10] <-  NLSref
+      database[problemNumber,11] <-  NLStag
 
       problemNumber <- problemNumber +1
     }
     cat("Successful problem-->",i,"\n")
   }
+  return(list(database=database,errorlog=errorlog))
 }
