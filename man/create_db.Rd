@@ -22,4 +22,5 @@ Returns a dataframe.
 }
 \examples{
 database <- create_db()
+#View(database)
 }
