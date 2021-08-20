@@ -18,7 +18,7 @@ NLStag<-"unbounded"
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLSproblems <- read.table(system.file("extdata","problems.csv",
                                         package="nlsCompare"),header=TRUE,sep=",")
-#NLSref<-"nlsr"
+NLSref<-"nlsr"
 #NLSrefVersion<-packageVersion(NLSref)
 NLSpars<-as.numeric(subset(NLSproblems,Name=="Croucher_1.R")[6:(6+subset(NLSproblems,Name=="Croucher_1.R")$nPars-1)])
 NLSssquares<-subset(NLSproblems,Name=="Croucher_1.R")$ssquares

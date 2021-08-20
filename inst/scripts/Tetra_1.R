@@ -26,7 +26,7 @@ NLSlower<- c(-Inf,-Inf,-Inf,-Inf)
 NLSupper<- c(Inf,Inf,Inf,Inf)
 NLSweights <- rep(0.25,length(time))
 NLSsubset <- 1:length(time)
-#NLSref<-"nlsr"
+NLSref<-"nlsr"
 #NLSrefVersion<-packageVersion(NLSref)
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLSproblems <- read.table(system.file("extdata","problems.csv",

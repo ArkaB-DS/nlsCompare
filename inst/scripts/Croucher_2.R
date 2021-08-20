@@ -1,7 +1,7 @@
 #  Croucher_2.R
 NLSstart <- c(p1=1, p2=0.2)
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
-#NLSref<-"nlsr"
+NLSref<-"nlsr"
 #NLSrefVersion<-packageVersion(NLSref)
 NLSproblems <- read.table(system.file("extdata","problems.csv",
                                         package="nlsCompare"),header=TRUE,sep=",")

@@ -2,7 +2,7 @@
 # feasible bounds, with regular solution
 NLSlower<- c(2, -10)
 NLSupper<- c(10,-1)
-#NLSref<-"nlsr"
+NLSref<-"nlsr"
 #NLSrefVersion<-packageVersion(NLSref)
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLSproblems <- read.table(system.file("extdata","problems.csv",
