@@ -7,3 +7,4 @@ nlsj::nlsj,default,nlsj::nlsj.control(minFactor=0.0001)
 nlsj::nlsj,marquardt,nlsj::nlsj.control()
 nlsr::nlxb,NULL,"list(phi=0.5,offset=99)"
 nlsr::nlxb,NULL,NULL
+nls,default,nls.control()
