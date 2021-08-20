@@ -8,8 +8,8 @@
 NLSstart <- list(b1=1,b2=1,b3=.1) # feasible start
 NLSlower <- c(0,0,0)
 NLSupper <- c(b1=500,b2=100,b3=.25)
-NLSref<-"nlsr"
-NLSrefVersion<-packageVersion(NLSref)
+#NLSref<-"nlsr"
+#NLSrefVersion<-packageVersion(NLSref)
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLSproblems <- read.table(system.file("extdata","problems.csv",
                                         package="nlsCompare"),header=TRUE,sep=",")

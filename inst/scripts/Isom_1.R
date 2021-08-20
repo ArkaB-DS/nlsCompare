@@ -40,8 +40,8 @@ NLSupper<- c(Inf,Inf,Inf)
 NLSweights <- rep(1,length(n.pent))
 NLSsubset <- 1:length(n.pent)
 #NLSstart1 <-c(b1=1, b2 = b2, b3 = b3, b4 = b4) # a starting vector (named!)
-NLSref<-"nlsr"
-NLSrefVersion<-packageVersion(NLSref)
+#NLSref<-"nlsr"
+#NLSrefVersion<-packageVersion(NLSref)
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLSproblems <- read.table(system.file("extdata","problems.csv",
                                         package="nlsCompare"),header=TRUE,sep=",")

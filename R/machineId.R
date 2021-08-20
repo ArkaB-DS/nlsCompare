@@ -1,5 +1,5 @@
 machineId <- function(){
-  options(warn=-1) #  include this ??
+  options(warn=-1)
   sy<-Sys.info()
   cpu<-benchmarkme::get_cpu()
   ramtry<-as.numeric( benchmarkme::get_ram() )

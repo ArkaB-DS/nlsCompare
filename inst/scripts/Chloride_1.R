@@ -36,14 +36,14 @@ NLSlower<- c(-Inf,-Inf,-Inf)
 NLSupper<- c(Inf,Inf,Inf)
 NLSweights <- rep(1,length(time))
 NLSsubset <- 1:length(time)
-NLSref<-"nlsr"
+#NLSref<-"nlsr"
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLSproblems <- read.table(system.file("extdata","problems.csv",
                                         package="nlsCompare"),header=TRUE,sep=",")
 NLSpars<-as.numeric(subset(NLSproblems,Name=="Chloride_1.R")[6:(6+subset(NLSproblems,Name=="Chloride_1.R")$nPars-1)])
 NLSssquares<-subset(NLSproblems,Name=="Chloride_1.R")$ssquares
 NLStag<-"unbounded"
-NLSrefVersion<-packageVersion(NLSref)
+#NLSrefVersion<-packageVersion(NLSref)
 # NLSproblems[NLSproblems[,"Name"]=="Chloride_1.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
 # NLSproblems[NLSproblems[,"Name"]=="Chloride_1.R",]$LastUpdated<-format(Sys.time(), "%Y-%m-%d %H:%M")
 # write.table(NLSproblems,system.file("extdata","problems.csv",
