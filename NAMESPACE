@@ -1,5 +1,7 @@
 #exportPattern("^[^\\.]")
-importFrom("stats", "deviance")
-importFrom("utils", "read.table", "write.table")
-importFrom("easycsv","choose_dir")
-importFrom("benchmarkme","get_ram","get_cpu")
+importFrom(stats, deviance)
+importFrom(utils, read.table, write.table)
+importFrom(easycsv,choose_dir)
+importFrom(benchmarkme,get_ram,get_cpu)
+export(machineId,rm_nls,create_db,create_elog,run,csv_exists,
+       setup_dir,write_csvs)
