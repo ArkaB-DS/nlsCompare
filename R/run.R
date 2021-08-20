@@ -119,9 +119,15 @@ run<-function(machid,database,errorlog){
       database[problemNumber,6] <- NLSmethods[j,3]
       database[problemNumber,7] <- Parameters
       database[problemNumber,8] <- Deviance
+      if (NLSsolver=="nlsr::nlxb"){
+        database[problemNumber,9] <- ifelse(isTRUE(all.equal(as.numeric(c(Deviance,
+                                                                        Parameters)),rep(1,2))),"Equal",
+                                                  ifelse(output$ssquares<NLSssquares,"Better","Worse"))
+      }else{
       database[problemNumber,9] <- ifelse(isTRUE(all.equal(as.numeric(c(Deviance,
 									Parameters)),rep(1,2))),"Equal",
 							   ifelse(deviance(output)<NLSssquares,"Better","Worse"))
+      }
       database[problemNumber,10] <-  NLSref
       database[problemNumber,11] <-  NLStag
 
