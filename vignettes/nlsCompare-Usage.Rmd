@@ -5,12 +5,11 @@ author: |
   | Department of Mathematics and Statistics
   | Indian Institute of Technology, Kanpur
 date: "`r Sys.Date()`"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
-vignette: |
-  %\VignetteIndexEntry{nlsCompare: How to use it?} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{nlsCompare: How to use it?}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 urlcolor: blue
 ---
 
