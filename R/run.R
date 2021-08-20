@@ -17,7 +17,7 @@ run<-function(machid,database,errorlog){
     for(j in 1:nrow(NLSmethods)){
       cat("Using method number",j,"\n")
 
-      NLSsolver=NLSmethods[j,1]
+          NLSsolver=NLSmethods[j,1]
 	    NLSalgorithm=NLSmethods[j,2]
 	    NLScontrol=eval(parse(text=NLSmethods[j,3]))
 
@@ -75,21 +75,36 @@ run<-function(machid,database,errorlog){
 	    #Residuals<-numeric_output(Residuals)
 
       ## deviance
+	if (NLSsolver=="nlsr::nlxb"){
+	      check.dev<-try(Deviance<-all.equal(NLSssquares,
+                                           output$ssquares,
+							 tolerance=epstol*(max(abs(c(NLSssquares,output$ssquares)))
+								+epstol)))
+	}else{
       check.dev<-try(Deviance<-all.equal(NLSssquares,
                                            deviance(output),
 							 tolerance=epstol*(max(abs(c(NLSssquares,deviance(output))))
 								+epstol)))
+	}
       if(inherits(check.dev,"try-error")){
         Deviance <- attr(check.dev,"condition")$message
       }
       Deviance<-numeric_output(Deviance)
 
        ## parameters
+	if (NLSsolver=="nlsr::nlxb"){
+	check.pars<-try(Parameters<-all.equal( 	as.numeric(NLSpars),
+                                               	as.numeric(output$coefficients),
+								tolerance=epstol*(max(abs(c(as.numeric(NLSpars),
+												as.numeric(output$coeffcients))))
+								+epstol)))
+	}else{
       check.pars<-try(Parameters<-all.equal( 	as.numeric(NLSpars),
                                                	as.numeric(output$m$getPars()),
 								tolerance=epstol*(max(abs(c(as.numeric(NLSpars),
 												as.numeric(output$m$getPars()))))
 								+epstol)))
+	}
       if(inherits(check.pars,"try-error")){
         Parameters <- attr(check.pars,"condition")$message
       }
