@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette attempts to give a documentation on how to use the package **nlsCompare** to compare the best parameter values and sum-of-squares involved in solving a non-linear least squares (nls) problems with R's existing and new packages' nls functions viz. `nls` (**base**), `nls.lm` (**minpack.lm**), `nlxb` (**nlsr**) and `nlsj` (**nlsj**). The last one is a new package developed during the **Google Summer of Code (GSoC), 2021** program.  
+This vignette attempts to give a documentation on how to use the package **nlsCompare** to compare the best parameter values and sum-of-squares involved in solving non-linear least squares (nls) problems with R's existing and new packages' nls functions viz. `nls` (**base**), `nls.lm` (**minpack.lm**), `nlxb` (**nlsr**) and `nlsj` (**nlsj**). The last one is a new package developed during the **Google Summer of Code (GSoC), 2021** program.  
 The GSoC project titled [**Improvements to nls()**](https://gitlab.com/nashjc/improvenls). The project student was the author, mentored by Dr. John C. Nash (retired professor, Telfer School of Management, University of Ottawa) and Dr. Heather Turner (Department of Statistics, University of Warwick). **nlsCompare** is a product of the above project.
 
 ## How to install nlsCompare
