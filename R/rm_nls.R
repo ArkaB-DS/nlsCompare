@@ -3,6 +3,6 @@ rm_nls <- function(){
   rm(NLSdata,NLSformula,NLSlower,NLSmethods,NLSproblems,
      NLSsubset,NLSupper,NLSweights,NLSstart,
      NLSssquares,NLSpars,refsol,NLStag,NLSref,NLSrefVersion,
-     #envir=.GlobalEnv
+     envir=.GlobalEnv
      )
 }
