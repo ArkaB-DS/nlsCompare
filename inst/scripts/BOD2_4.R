@@ -8,7 +8,7 @@ NLSref<-"nlsr"
 refsol<-nlsr::nlxb(NLSformula,NLSstart,NLSdata,lower=NLSlower, upper=NLSupper,trace=TRUE)
 NLSproblems <- read.table(system.file("extdata","problems.csv",
                                         package="nlsCompare"),header=TRUE,sep=",")
-NLSpars<-as.numeric(subset(NLSproblems,Name=="BOD2_4.R")[6:(6+subset(NLSproblems,Name=="BOD2_4.R")$nPars-1)])
+NLSpars<-as.numeric(subset(NLSproblems,Name=="BOD2_4.R")[4:(4+subset(NLSproblems,Name=="BOD2_4.R")$nPars-1)])
 NLSssquares<-subset(NLSproblems,Name=="BOD2_4.R")$ssquares
 NLStag<-"bounded"
 # NLSproblems[NLSproblems[,"Name"]=="BOD2_4.R",]$PkgVers<-paste(NLSref,NLSrefVersion,sep=":")
