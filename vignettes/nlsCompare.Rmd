@@ -1,0 +1,61 @@
+---
+title: 'nlsCompare: How to use it?'
+author: |
+  | Arkajyoti Bhattacharjee
+  | Department of Mathematics and Statistics
+  | Indian Institute of Technology, Kanpur
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+vignette: |
+  %\VignetteIndexEntry{nlsCompare: How to use it?} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette attempts to give a documentation on how to use the package **nlsCompare** to compare the best parameter values and sum-of-squares involved in solving a non-linear least squares (nls) problems with R's existing and new packages' nls functions viz. `nls` (**base**), `nls.lm` (**minpack.lm**), `nlxb` (**nlsr**and `nlsj` (**nlsj**). The last one is a new package developed during the *Google Summer of Code,2021* program, where the corresponding project was [**Improvements to nls()**](https://gitlab.com/nashjc/improvenls). THe project student was the author, mentored by Dr. John C. Nash (retired professor, Telfer School of Management, University of Ottawa) and Dr. Heather Turner (Department of Statistics, University of Warwick). **nlsCompare** is also a product of the above project.
+
+## How to install nlsCompare
+
+As of this writing, only a development version of the package is available on GitHub. The package can be downloaded from GitHub using `devtoools` :
+```{r eval=TRUE}
+# install.packages(devtools)  ## uncomment if devtools package is not installed
+devtools::install_github("ArkaB-DS/nlsCompare")
+```
+
+## How to use it
+
+The following `R` code gives a template on how to use the package for testing:
+
+```{r eval=TRUE}
+library(nlsCompare)         ## load the library
+machid <- machineId()       ## get your machine summary as a string 
+## uncomment when running this r script
+# setup_dir()               ## setup working directory to store the outputs
+st <- create_db()           ## create dataframe to save the database of problems 
+sr <- create_elog()         ## create dataframe to save the error log while solving the problems
+csv_exists(st, sr)          ## see if nlsDatabase.csv and nlsErrorLog.csv already exists in the directory
+logs <- run(machid, st, sr) ## run the tests
+write_csvs(logs$database, logs$errorlog) ## write final outputs in the csv files created
+rm_nls()                    ## delete objects created by the above functions 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+

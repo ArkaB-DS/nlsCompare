@@ -3,9 +3,13 @@ Type: Package
 date: 2021-08-06
 Title: Compare existing packages' functions on nonlinear least squares with `nls` (base)
 Version: 0.1.0
-Imports: easycsv, benchmarkme, nlsr, minpack.lm,nlsj
+Imports: easycsv, benchmarkme, nlsr, minpack.lm, nlsj
 Remotes: github::ArkaB-DS/nlsj
-Suggests: devtools, testthat
+Suggests: 
+    knitr,
+    devtools,
+    testthat,
+    rmarkdown
 Author: Arkajyoti Bhattacharjee
 Maintainer: Arkajyoti Bhattacharjee <arkastat98@gmail.com>
 Description: This package attempts to compare `nls` with other existing packages' functions 
@@ -16,3 +20,4 @@ Description: This package attempts to compare `nls` with other existing packages
 License: GPL-2 | GPL-3 
 Encoding: UTF-8
 LazyData: true
+VignetteBuilder: knitr
