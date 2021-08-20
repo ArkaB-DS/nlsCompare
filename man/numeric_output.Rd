@@ -24,6 +24,7 @@ Returns a string with only numeric output if the input string contains ":"; othe
 \code{\link{sapply}},\code{\link{gsub}},\code{\link{all}},\code{\link{grepl}}
 }
 \examples{
-str <- "Mean relative difference of 0.000567"
-numeric_output(str)
+## NOT RUN
+# str <- "Mean relative difference of 0.000567"
+# numeric_output(str)
 }
