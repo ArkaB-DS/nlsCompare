@@ -1,4 +1,4 @@
-exportPattern("^[^\\.]")
+#exportPattern("^[^\\.]")
 importFrom("stats", "deviance")
 importFrom("utils", "read.table", "write.table")
 importFrom("easycsv","choose_dir")

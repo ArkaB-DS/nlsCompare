@@ -1,5 +1,5 @@
-\name{create_runlines}
-\alias{create_runlines}
+\name{create_runline}
+\alias{create_runline}
 \title{
 Create runlines to be used by \code{run()}
 }
@@ -7,7 +7,7 @@ Create runlines to be used by \code{run()}
 This is a helper unction used by the \code{run} function. It creates the runlines that can used by a nonlinear least squares (nls) function like \code{nls}.
 }
 \usage{
-create_runlines(NLSsolver,NLSalgorithm,NLScontrol,NLSdata,
+create_runline(NLSsolver,NLSalgorithm,NLScontrol,NLSdata,
 			NLSstart,NLSlower,NLSupper,NLSweights,NLSsubset,
 			NLSna.action=NULL,NLSmasked=NULL)
 }

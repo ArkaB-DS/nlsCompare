@@ -12,10 +12,7 @@ Suggests:
     rmarkdown
 Author: Arkajyoti Bhattacharjee
 Maintainer: Arkajyoti Bhattacharjee <arkastat98@gmail.com>
-Description: This package attempts to compare the best parameter values and 
-sum-of-squares involved in solving non-linear least squares (nls) problems with R's existing 
-and new packages' nls functions viz. `nls` (**base**), `nls.lm` (**minpack.lm**),
-`nlxb` (**nlsr**) and `nlsj` (**nlsj**).
+Description: This package attempts to compare the best parameter values and sum-of-squares involved in solving non-linear least squares (nls) problems with R's existing and new packages' nls functions. 
 License: GPL-2 | GPL-3 
 Encoding: UTF-8
 LazyData: true
