@@ -12,7 +12,7 @@ create_runline<-function(NLSsolver,NLSalgorithm,NLScontrol,NLSdata,
         					algorithm=NLSalgorithm,
         					control=NLScontrol)"
 
-	if (NLScontrol=="nlsr::nlxb"){
+	if (NLSsolver=="nlsr::nlxb"){
 		NLSrunline <- "(formula=NLSformula,
         				    data=NLSdata,
         				    start=NLSstart,
