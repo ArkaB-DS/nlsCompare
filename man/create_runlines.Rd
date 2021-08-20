@@ -47,14 +47,6 @@ a function which indicates what should happen when the data contain NAs.
 Character vector of quoted parameter names. See \code{\link{nlxb}}
 }
 }
-\details{
-
-}
 \value{
 Returns a string used in \code{run}
-}
-\seealso{
-\code{\link{run}},\code{\link{nls}},\code{\link{nlxb}},\code{\link{nls.lm}}
-}
-\examples{
 }

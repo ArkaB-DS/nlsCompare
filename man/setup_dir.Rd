@@ -1,19 +1,19 @@
 \name{setup_dir}
 \alias{setup_dir}
 \title{
-Setup directory
+Setup working directory
 }
 \description{
-Choose a directory to save the final output (csv files) created by \code{run()}.
+Choose a directory from the pop-up window to save the final output (csv files) created by \code{run()}.
 }
 \usage{
 setup_dir()
 }
-\details{
-
+\value{
+Returns the location of the directory chosen.
 }
 \seealso{
-\code{\link{choose_dir}}
+\code{\link{setwd}}, \code{\link{choose_dir}}
 }
 \examples{
 ## NOT RUN

@@ -9,10 +9,6 @@ This functions removes all the global variables created by running the functions
 \usage{
 rm_nls()
 }
-\details{
-
-}
-
 \seealso{
 \code{\link{rm}}
 }

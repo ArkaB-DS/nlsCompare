@@ -22,5 +22,6 @@ Returns a dataframe.
 }
 \examples{
 errorLog <- create_elog()
+## NOT RUN
 # View(errorlog)
 }

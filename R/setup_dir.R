@@ -1,3 +1,5 @@
 setup_dir<-function(){
-  setwd(easycsv::choose_dir()) 
+  location <- easycsv::choose_dir()
+  setwd(location)
+  return(location)
 }

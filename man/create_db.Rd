@@ -22,5 +22,6 @@ Returns a dataframe.
 }
 \examples{
 database <- create_db()
+## NOT RUN
 #View(database)
 }
