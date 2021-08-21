@@ -19,7 +19,7 @@ by Arkajyoti Bhattacharjee and mentored by Dr. John C Nash and Dr. Heather Turne
 
 
 ## Documentation
-A **vignette** to demonstrate the above workflow is [`nlsComapre: How to Use It?`](https://github.com/ArkaB-DS/nlsCompare/blob/master/vignettes/nlsCompare-Usage.pdf).
+A **vignette** to demonstrate the above workflow is [`nlsCompare: How to Use It?`](https://github.com/ArkaB-DS/nlsCompare/blob/master/vignettes/nlsCompare-Usage.pdf).
 
 For more detals about the package, please refer to [`nlsCompare article`](https://github.com/ArkaB-DS/nlsCompare/blob/master/nlsCompare_Vignette.pdf).
 
