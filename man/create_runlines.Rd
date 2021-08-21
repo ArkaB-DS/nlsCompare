@@ -48,5 +48,11 @@ Character vector of quoted parameter names. See \code{\link{nlxb}}
 }
 }
 \value{
-Returns a string used in \code{run}
+Returns a string used inside \code{run}
+}
+\note{
+This is a helper function used inside \code{run}.
+}
+\seealso{
+\code{\link{run}}
 }
