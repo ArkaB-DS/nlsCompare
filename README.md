@@ -1,5 +1,9 @@
 # nlsCompare
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/ArkaB-DS/nlsCompare/workflows/R-CMD-check/badge.svg)](https://github.com/ArkaB-DS/nlsCompare/actions)
+<!-- badges: end -->
+
 An R package to compare different packages' functions for nonlinear least squares `(nls)`
 
 This package grew out as a product of the Google Summer of Code (2021) project [`Improvements to nls()`](https://github.com/ArkaB-DS/GSOC21-improveNLS)
