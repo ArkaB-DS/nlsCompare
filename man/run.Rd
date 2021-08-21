@@ -28,4 +28,9 @@ It returns a list of 2 items:
 \item{database}{updated database dataframe}
 \item{errorlog}{updated error log dataframe}
 }
-
+\details{
+The function first stores problems.csv and methods.csv into dataframes NLSproblems and NLSmethods respectively. It then sources the files, with names from NLSproblems, from the inst/scripts directory. That in turns creates NLSdata, NLSformula, NLSlower, NLSmethods, NLSproblems, NLSsubset, NLSupper, NLSweights, NLSstart, NLSssquares, NLSpars, refsol, NLStag, and NLSref. These along, with algorithm and control from NLSmethods are used inside \code{create_runline}, a helper function. The returned string is then used by the solver from NLSproblems to create nls models. From there, the parameter values and sum of squares are compared with the reference values that are present in "scripts" via problems.csv. Finally, the results are used to modify the  argument dataframes database and errorlog and they are returned as a list.
+}
+\seealso{
+\code{\link{all.equal}}
+}

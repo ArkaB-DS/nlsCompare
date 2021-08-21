@@ -12,7 +12,6 @@ rm_nls()
 \seealso{
 \code{\link{rm}}
 }
-\examples{
-## NOT RUN
-# rm_nls()
+\details{
+The function is a wrapper for \code{rm}.
 }

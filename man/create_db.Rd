@@ -11,14 +11,14 @@ create_db()
 }
 %- maybe also 'usage' for other objects documented here.
 \details{
-The function creates a dataframe with column names `DateTime`, `MachID`, `FileName`, `Solver`, `Algorithm`, `Control`,  `Parameters`, `SSquares`, `Better`, `RefSol`,`Tags`.
+The function creates a dataframe with column names `DateTime`, `MachID`, `FileName`, `Solver`, `Algorithm`, `Control`,  `Parameters`, `SSquares`, `Better`, `RefSol`,`Tags`. The function is wrapper for \code{data.frame}.
 }
 \value{
 Returns a dataframe.
 }
 
 \seealso{
-\code{\link{create_elog}}, \code{\link{write_csvs}}, \code{\link{data.frame}}
+\code{\link{create_elog}}, \code{\link{data.frame}}
 }
 \examples{
 database <- create_db()

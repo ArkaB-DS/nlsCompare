@@ -9,6 +9,9 @@ Choose a directory from the pop-up window to save the final output (csv files) c
 \usage{
 setup_dir()
 }
+\details{
+The function is a wrapper for \code{setwd}.
+}
 \value{
 Returns the location of the directory chosen.
 }
