@@ -29,7 +29,7 @@ For more detals about the package, please refer to [`nlsCompareArticle`](https:/
 
 **Warning:** As of 2021-08-23, the package is still in the development stage!
 
-To install this developement repo via `devtools`, use:
+To install this developement repo via `devtools` in **R**, use:
 
 ```
  # install.packages("devtools")
